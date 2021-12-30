@@ -1,7 +1,7 @@
 {
-  "name": "AlphabotMD",
+  "name": "JembotMD",
   "version": "0.0.3",
-  "description": "Alpha Bot Multi Device",
+  "description": "Jem-Bot Multi Device",
   "main": "zeeone.js",
   "directories": {
     "lib": "lib"
