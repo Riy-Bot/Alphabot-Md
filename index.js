@@ -305,6 +305,17 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 reply(respon)
             }
             break
+case 'runtime': {
+                let timestamp = speed()
+                let latensi = speed() - timestamp
+                neww = performance.now()
+                oldd = performance.now()
+                respon = `
+_${runtime(process.uptime())}_
+                `.trim()
+                reply(respon)
+            }
+            break
             case 'owner': case 'creator': {
                 let vcard = 'BEGIN:VCARD\n' // metadata of the contact card
                     + `VERSION:3.0\n`
@@ -318,6 +329,9 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             break
             case 'rules':
             reply(lang.rules(prefix))
+            break
+            case 'sourcecode': case 'script': case 'sc':
+            reply('Script 1\nhttps://github.com/zeeone/Alphabot-Md\n\nScript 2/nhttps://github.com/RiyxYog')
             break
             case 'donasi': case 'donate':
             reply(lang.tos(ownernomer))
