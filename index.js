@@ -578,19 +578,55 @@ if (!m.isGroup) return reply(lang.groupOnly())
                 if (!m.key.fromMe && !isCreator) return reply(lang.ownerOnly())
                reply('Sayonara~ 👋').then(async res => await alpha.groupLeave(from))
             break
-            case 'group': case 'grup':
-                if (!m.isGroup) return reply(lang.groupOnly())
-                
-                if (args[1] === 'open'){
-                    await alpha.groupSettingUpdate(from, 'not_announcement')
-		 		   reply(lang.ok())
-                } else if (args[1] === 'close'){
-                    await alpha.groupSettingUpdate(from, 'announcement')
-                    reply(lang.ok())
-                } else {
-                    reply(lang.wrongFormat())
+           case 'gcnya': {
+
+                if (!m.isGroup) throw mess.group
+
+          
+
+                if (!text) throw 'Masukkan value open/close'
+
+                if (args[0].toLowerCase() === 'close') {
+
+                    await alpha.goupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+
+                } else if (args[0].toLowerCase() === 'open') {
+
+                    await alpha.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+
                 }
-            break 
+
+            }
+
+           
+			break
+		case 'group': case 'grup': case 'gc': {               
+
+                let buttons = [
+
+                    {buttonId: `gcnya open`, buttonText: {displayText: 'Open✔️'}, type: 1},
+
+                    {buttonId: `gcnya close`, buttonText: {displayText: 'Close✖️'}, type: 1}
+
+                ]
+
+                let buttonMessage = {
+
+                    text: "PILIH SALAH SATU NYET !",
+
+                    footerText: 'Press The Button Below',
+
+                    buttons: buttons,
+
+                    headerType: 2
+
+                }
+
+                alpha.sendMessage(m.chat, buttonMessage, { quoted: m })
+
+            }
+
+            break
 
  default:
 if (budy.startsWith('=>')) {
