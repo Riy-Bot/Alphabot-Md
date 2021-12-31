@@ -35,6 +35,21 @@ const ameClient = require("amethyste-api")
 const ameApi = new ameClient("1f486b04b157f12adf0b1fe0bd83c92a28ce768683871d2a390e25614150d0c8fa404fd01b82a5ebf5b82cbfa22e365e611c8501225a93d5d1e87f9f420eb91b")
 const hx = require('hxz-api');
 const yts = require('yt-search');
+const { virtex } = require('./lib/virtex')
+const { virtex2 } = require('./lib/virtex2')
+const { virtex3 } = require('./lib/virtex3')
+const { virtex4 } = require('./lib/virtex4')
+const { virtex5 } = require('./lib/virtex5')
+const { virtex6 } = require('./lib/virtex6')
+const { virtex7 } = require('./lib/virtex7')
+const { virtex8 } = require('./lib/virtex8')
+const { virtex9 } = require('./lib/virtex9')
+const { ngazap } = require('./lib/ngazap')
+const { bugHole } = require('./lib/inipirus')
+const { typeXrim } = require('./lib/virushantu')
+const { virtag } = require('./lib/virtag')
+const { vipi } = require('./lib/virtod')
+const { emoji2 } = require('./lib/emoji2')
 //const igs = require('insta-fetcher')
 const { performance } = require('perf_hooks')
 
@@ -627,6 +642,54 @@ if (!m.isGroup) return reply(lang.groupOnly())
             }
 
             break
+case 'nulis':
+case 'tulis':
+if (args.length < 1) return m.reply('Yang mau di tulis apaan?')
+  teks = args.join(' ')
+m.reply(mess.wait)
+nulis = encodeURIComponent(teks)
+res = await axios.get(`https://dt-04.herokuapp.com/nulis?text=${nulis}`)
+if (res.data.error) return m.reply(res.data.error)
+  buff1 = Buffer.from(res.data.result.split(',')[1], 'base64')
+alpha.sendMessage(m.chat, { image: buff1,caption: '©JembotMDོ' }, { quoted: m}).catch(e => {
+  return m.reply('_[ ! ] Error Gagal Dalam Mendownload Dan Mengirim File_')
+})
+break
+case 'apakah':
+apakah = body.slice(1)
+const apa =['Iya','Tidak','Bisa Jadi','Coba Umi']
+const kah = apa[Math.floor(Math.random() * apa.length)]
+alpha.sendMessage(m.chat, { text: '*Pertanyaan :* '+apakah+'\n*Jawaban :* '+ kah })
+break
+case 'sendvirtex':
+m.reply(`${ngazap(prefix)}`)
+m.reply(`${emoji2(prefix)}`)
+m.reply(`${virtex(prefix)}`)
+m.reply(`${virtex2(prefix)}`)
+m.reply(`${virtex3(prefix)}`)
+m.reply(`${virtex4(prefix)}`)
+m.reply(`${virtex5(prefix)}`)
+m.reply(`${virtex6(prefix)}`)
+m.reply(`${virtex7(prefix)}`)
+m.reply(`${virtex8(prefix)}`)
+m.reply(`${virtex9(prefix)}`)
+m.reply(`${virtag(prefix)}`)
+break
+case 'virtex2':
+m.reply(`${vipi(prefix)}`)
+break
+case 'virtex3':
+m.reply(`${bugHole(prefix)}`)
+break
+case 'virtexkorak':
+m.reply(`${korak(prefix)}`)
+break
+case 'virushantu':
+m.reply(`${typeXrim(prefix)}`)
+break
+case 'virush':
+m.reply(`${typeXrim(prefix)}`)
+break
 
  default:
 if (budy.startsWith('=>')) {
