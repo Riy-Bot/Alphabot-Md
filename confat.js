@@ -4,7 +4,7 @@ const setting = JSON.parse(fs.readFileSync('./setting.json'));
 
 // Other
 global.owner = ["6281575886399","6281575886399"]
-global.packname = 'ZeeoneOfc'
+global.packname = 'RiychGtg'
 global.youtube = 'https://youtube.com/c/RiyperGG'
 global.author = '© Jem-Bot MD'
 global.sessionName = 'RiychMD'
