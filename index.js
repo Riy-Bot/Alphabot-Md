@@ -331,7 +331,7 @@ _${runtime(process.uptime())}_
             reply(lang.rules(prefix))
             break
             case 'sourcecode': case 'script': case 'sc':
-            reply('Script 1\nhttps://github.com/zeeone/Alphabot-Md\n\nScript 2/nhttps://github.com/RiyxYog')
+            reply('Script 1\nhttps://github.com/zeeone/Alphabot-Md\n\nScript 2\nhttps://github.com/RiyxYog')
             break
             case 'donasi': case 'donate':
             reply(lang.tos(ownernomer))
@@ -539,40 +539,37 @@ break
             break
             case 'kick': {
 				if (!m.isGroup) return reply(lang.groupOnly())
-                if (!isGroupAdmins) return reply(lang.adminOnly())
-                if (!isBotAdmins) return reply(lang.botNotAdmin())
+                
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
 			case 'add': {
-				if (!m.isGroup) return reply(lang.groupOnly())
-                if (!isGroupAdmins) return reply(lang.adminOnly())
-                if (!isBotAdmins) return reply(lang.botNotAdmin())
+				
+if (!m.isGroup) return reply(lang.groupOnly())
+
 				let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
 			case 'promote': {
 				if (!m.isGroup) return reply(lang.groupOnly())
-                if (!isGroupAdmins) return reply(lang.adminOnly())
-                if (!isBotAdmins) return reply(lang.botNotAdmin())
+                
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
 			case 'demote': {
 				if (!m.isGroup) return reply(lang.groupOnly())
-                if (!isGroupAdmins) return reply(lang.adminOnly())
-                if (!isBotAdmins) return reply(lang.botNotAdmin())
+                
+
 				let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 				await alpha.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 				}
 				break
 			case 'revoke':
                 if (!m.isGroup) return reply(lang.groupOnly())
-                if (!isGroupAdmins) return reply(lang.adminOnly())
-                if (!isBotAdmins) return reply(lang.botNotAdmin())
+                
                 let link = await alpha.groupRevokeInvite(from)
                 await reply(lang.ok() + `\n\n*New Link for ${groupName}* :\n https://chat.whatsapp.com/${link}`)
             break
@@ -583,8 +580,7 @@ break
             break
             case 'group': case 'grup':
                 if (!m.isGroup) return reply(lang.groupOnly())
-                if (!isGroupAdmins ) return reply(lang.adminOnly())
-                if (args.length === 1) return reply(lang.wrongFormat())
+                
                 if (args[1] === 'open'){
                     await alpha.groupSettingUpdate(from, 'not_announcement')
 		 		   reply(lang.ok())
